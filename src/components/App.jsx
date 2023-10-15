@@ -1,9 +1,14 @@
 import 'bulma/css/bulma.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Filter } from './Filter/Filter';
 import { Contacts } from './Contacts/Contacts';
 import { PhonebookItem } from './PhonebookItem/PhonebookItem';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  setHandleAddContact,
+  setOnDeleteContact,
+  setOnFilterContact,
+} from 'redux/phoneBookReducer';
 
 export const App = () => {
   const contacts = useSelector(state => state.phoneBook.contacts);
@@ -12,25 +17,15 @@ export const App = () => {
   const dispatch = useDispatch();
 
   const handleAddContact = newContact => {
-    dispatch({
-      type: 'phoneBook/toAddContact',
-      payload: newContact,
-    });
+    dispatch(setHandleAddContact(newContact));
   };
 
   const onDeleteContact = id => {
-    dispatch({
-      type: 'phoneBook/toDeleteContact',
-      payload: id,
-    });
+    dispatch(setOnDeleteContact(id));
   };
 
   const onFilterContact = event => {
-    const inputFilterValue = event.target.value;
-    dispatch({
-      type: 'phoneBook/toChangeFilter',
-      payload: inputFilterValue,
-    });
+    dispatch(setOnFilterContact(event));
   };
 
   const filtered = contacts.filter(contact => {

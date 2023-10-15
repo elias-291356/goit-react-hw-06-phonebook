@@ -11,6 +11,12 @@ export const phoneBookReducer = (state = initialState, action) => { // { type: '
         contacts: [...state.contacts, action.payload],
       };
     }
+    case 'phoneBook/toChangeFilter': {
+      return {
+        ...state,
+        filter: action.payload,
+      };
+    }
     case 'phoneBook/toDeleteContact': {
       return {
         ...state,
@@ -20,18 +26,32 @@ export const phoneBookReducer = (state = initialState, action) => { // { type: '
         ),
       };
     }
-    case 'phoneBook/toChangeFilter': {
-      return {
-        ...state,
-        filter: action.payload,
-      };
-    }
     default:
       return state;
   }
 };
 
 
-// toAddContact
-// toDeleteContact
-// toChangeFilter
+export const setHandleAddContact = (newContact) => {
+  return ({
+    type: 'phoneBook/toAddContact',
+    payload: newContact,
+  });
+};
+
+
+
+export const setOnDeleteContact = (id) => {
+  return ({
+    type: 'phoneBook/toDeleteContact',
+    payload: id,
+  });
+};
+
+export const setOnFilterContact = (event) => {
+  const inputFilterValue = event.target.value;
+  return ({
+    type: 'phoneBook/toChangeFilter',
+    payload: inputFilterValue,
+  });
+};

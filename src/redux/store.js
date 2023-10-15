@@ -1,20 +1,14 @@
 
-import { createStore } from "redux";
-// Імпортуємо функцію композиції редюсерів
 import { combineReducers } from "redux";
 import { phoneBookReducer } from "./phoneBookReducer";
-import { devToolsEnhancer } from "@redux-devtools/extension"
-// Код редюсерів tasksReducer та filtersReducer
+import { configureStore } from "@reduxjs/toolkit";
 
 export const rootReducer = combineReducers({
   phoneBook: phoneBookReducer,
 });
 
-// Початкове значення стану Redux для кореневого редюсера,
-// якщо не передати параметр preloadedState.
+//=============== After ========================
 
-
-
-const enhancer = devToolsEnhancer();
-export const store = createStore(rootReducer, enhancer);
-
+export const store = configureStore({
+  reducer: rootReducer,
+});

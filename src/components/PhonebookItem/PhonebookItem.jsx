@@ -6,7 +6,7 @@ export const PhonebookItem = ({ contacts, onAddContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const onInputChange = (event) => {
+  const onInputChange = event => {
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
@@ -15,10 +15,10 @@ export const PhonebookItem = ({ contacts, onAddContact }) => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
 
-    if (contacts.some((contact) => contact.name === name)) {
+    if (contacts.some(contact => contact.name === name)) {
       Notiflix.Notify.warning(`A contact named "${name}" already exists.`);
     } else {
       const newContact = {
