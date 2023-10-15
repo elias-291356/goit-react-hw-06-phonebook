@@ -25,7 +25,8 @@ export const App = () => {
   };
 
   const onFilterContact = event => {
-    dispatch(setOnFilterContact(event));
+    const inputFilterValue = event.target.value;
+    dispatch(setOnFilterContact(inputFilterValue));
   };
 
   const filtered = contacts.filter(contact => {
