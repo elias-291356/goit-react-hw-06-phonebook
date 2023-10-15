@@ -20,7 +20,7 @@ export const rootReducer = combineReducers({
 const phonebookPersistConfig = {
   key: 'phonebook',
   storage,
-  whitelist: ['contacts', 'filter'] //  в локал стораж пойдет только то, что указано
+  whitelist: ['contacts', 'filter'] //   в локал стораж пойдет только то, что указано
   // blacklist: ['filter'], в локал стораж пойдет все что не фильтр
 }
 
